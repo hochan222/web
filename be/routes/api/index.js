@@ -6,14 +6,6 @@ router.get('/hello', function(req, res, next) {
   res.send({msg: 'hello', a:1});
 });
 
-router.get('/user', function(req, res, next) {
-  res.send({msg: 'hello', a:1});
-});
-
-router.post('/user', function(req, res, next) {
-  res.send({msg: 'hello', a:1});
-});
-
 router.use('/test', require('./test'));
 router.use('/user', require('./user'));
 
