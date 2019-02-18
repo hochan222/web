@@ -37,26 +37,24 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const User = require('./models/users');
+
 mongoose.connect('mongodb://localhost:27017/nemv', { useNewUrlParser: true }, (err) => {
   if (err) return console.error(err);
   console.log('mongoose connected!');
+  User.deleteMany()
+      .then(r=>console.log(r))
+      .catch(e=>console.error(e));
 })
-
-const userSchema = new mongoose.Schema({
-  name: { type: String, default: ''},
-  age: {type: Number, default: 1}
-});
-
-const User = mongoose.model('User', userSchema);
 
 // User.create({ name: '하하' })
 //     .then(r => console.log(r))
 //     .catch(e => console.error(e));
 
-User.find()
-    .then(r=> console.log(r))
-    .catch(e=>console.err(e));
+// User.find()
+//     .then(r=> console.log(r))
+//     .catch(e=>console.err(e));
 
 // User.updateOne({ _id: '5c6aa9fe9c9df614184a95be'}, { $set: { age: 34 } })
 //     .then(r=> {
