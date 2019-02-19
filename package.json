@@ -1,0 +1,10 @@
+{
+  "name": "web",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "dev": "set NODE_ENV=development && node ./be/bin/www",
+    "pr": "set NODE_ENV=production && node ./be/bin/www"
+  },
+  "dependencies": {}
+}

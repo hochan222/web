@@ -68,3 +68,5 @@ mongoose.connect('mongodb://localhost:27017/nemv', { useNewUrlParser: true }, (e
 // User.deleteOne({ name: '하하'})
 //     .then(r => console.log(r))
 //     .catch(e=>console.err(e));
+
+console.log(process.env.NODE_ENV);
