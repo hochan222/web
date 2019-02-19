@@ -181,7 +181,7 @@
     },
     methods: {
       getReq () {
-        axios.get('/api/user', {
+        axios.get(`${this.$apiRootPath}user`, {
           user: 'getMan'
         })
         .then((r) => {
@@ -192,7 +192,7 @@
         })
       },
       postReq () {
-        axios.post('/api/user', {
+        axios.post(`${this.$apiRootPath}user`, {
           name: 'hochan', age: 24
         })
         .then((r) => {
@@ -203,7 +203,7 @@
         })
       },
       putReq () {
-        axios.put('/api/user', {
+        axios.put(`${this.$apiRootPath}user`, {
           user: 'putMan'
         })
         .then((r) => {
@@ -214,7 +214,7 @@
         })
       },
       delReq () {
-        axios.delete('/api/user', {
+        axios.delete(`${this.$apiRootPath}user`, {
           user: 'delMan'
         })
         .then((r) => {
@@ -232,7 +232,7 @@
       postUser () {
         console.log(this.userName, this.userAge);
         this.dialog = false;
-        axios.post('/api/user', {
+        axios.post(`${this.$apiRootPath}user`, {
           name: this.userName, age: this.userAge
         })
         .then((r) => {
@@ -244,7 +244,7 @@
         })
       },
       getUsers () {
-        axios.get('/api/user')
+        axios.get(`${this.$apiRootPath}user`)
         .then((r) => {
           this.users = r.data.users;
         })
@@ -254,7 +254,7 @@
       },
       putUser () {
         this.dialog = false;
-        axios.put(`/api/user/${this.putId}`, {
+        axios.put(`${this.$apiRootPath}user/${this.putId}`, {
           name: this.userName, age: this.userAge
         })
         .then((r) => {
@@ -272,7 +272,7 @@
         this.userAge = user.age;
       },
       delUser (id) {
-        axios.delete(`/api/user/${id}`, {
+        axios.delete(`${this.$apiRootPath}user/${id}`, {
           user: 'delMan'
         })
         .then((r) => {
