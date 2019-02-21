@@ -5,6 +5,8 @@
         <v-btn @click="IsRead">IsRead</v-btn>
         <v-btn @click="IsRemove">IsRemove</v-btn>
         <v-btn @click="IsClear">IsClear</v-btn>
+        <v-btn @click="apiWithToken">apiWithToken</v-btn>
+        <v-btn @click="apiWithTrash">apiWithTrash</v-btn>
     </v-container>
 </template>
 
@@ -32,7 +34,18 @@ export default {
         },
         IsClear () {
             localStorage.clear();
-        }
+        },
+        apiWithToken () {
+            const token = localStorage.getItem('token');
+            axios.get(`${this.$apiRootPath}test`, { headers: { Authorization: token } })
+                 .then(r => console.log(r.data))
+                 .catch(e => console.log(e.message))
+        },
+        apiWithTrash () {
+            axios.get(`${this.$apiRootPath}test`, { headers: { Authorization: 'safasfa' } })
+                 .then(r => console.log(r.data))
+                 .catch(e => console.log(e.message))
+        },
     } 
 }
 </script>

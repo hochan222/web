@@ -27,6 +27,11 @@ export default new Router({
       component: () => import('./views/header.vue')
     },
     {
+      path: '/sign',
+      name: 'sign',
+      component: () => import('./views/sign.vue')
+    },
+    {
       path: '*',
       name: 'e404',
       component: () => import('./views/e404.vue')

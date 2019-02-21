@@ -57,9 +57,9 @@ mongoose.connect(cfg.dbUrl, { useNewUrlParser: true }, (err) => {
 //     .then(r => console.log(r))
 //     .catch(e => console.error(e));
 
-// User.find()
-//     .then(r=> console.log(r))
-//     .catch(e=>console.err(e));
+//  User.find()
+//      .then(r=> console.log(r))
+//      .catch(e=>console.err(e));
 
 // User.updateOne({ _id: '5c6aa9fe9c9df614184a95be'}, { $set: { age: 34 } })
 //     .then(r=> {
@@ -76,12 +76,13 @@ mongoose.connect(cfg.dbUrl, { useNewUrlParser: true }, (err) => {
 
   module.exports = app;
 
-var jwt = require('jsonwebtoken');
-const key = '베리베리어려운키';
-var token = jwt.sign({ id: 'memi', email: 'memi@xxx.com' }, key);
+// //jwt
+// var jwt = require('jsonwebtoken');
+// const key = '베리베리어려운키';
+// var token = jwt.sign({ id: 'memi', email: 'memi@xxx.com' }, key);
 
-console.log(token);
+// console.log(token);
 
-var decoded = jwt.verify(token, key);
-console.log(decoded) 
-//console.log(new Date(decoded.iat*1000))
+// var decoded = jwt.verify(token, key);
+// console.log(decoded) 
+// //console.log(new Date(decoded.iat*1000))
