@@ -24,12 +24,22 @@ export default new Router({
     {
       path: '/header',
       name: 'header',
-      component: () => import('./views/header.vue')
+      component: () => import('./views/header.vue'),
+      //beforeEnter: authCheck
+      beforeEnter: (to, from, next) => {
+        if(!localStorage.getItem('token')) return next('block');
+        next();
+      }
     },
     {
       path: '/sign',
       name: 'sign',
       component: () => import('./views/sign.vue')
+    },
+    {
+      path: '/block',
+      name: 'block',
+      component: () => import('./views/block.vue')
     },
     {
       path: '*',
