@@ -31,23 +31,26 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  
   // render the error page
   res.status(err.status || 500);
   res.send({msg:err.message})
 });
 
-module.exports = app;
-
 const mongoose = require('mongoose');
 const User = require('./models/users');
 
-mongoose.connect('mongodb://localhost:27017/nemv', { useNewUrlParser: true }, (err) => {
+console.log(`${process.env.NODE_ENV} started!(환경변수)`);
+
+//config파일의 db인증 불러오기
+const cfg = require('../config');
+
+mongoose.connect(cfg.dbUrl, { useNewUrlParser: true }, (err) => {
   if (err) return console.error(err);
   console.log('mongoose connected!');
-  User.deleteMany()
-      .then(r=>console.log(r))
-      .catch(e=>console.error(e));
+  // User.deleteMany()
+  //     .then(r=>console.log(r))
+  //     .catch(e=>console.error(e));
 })
 
 // User.create({ name: '하하' })
@@ -60,15 +63,15 @@ mongoose.connect('mongodb://localhost:27017/nemv', { useNewUrlParser: true }, (e
 
 // User.updateOne({ _id: '5c6aa9fe9c9df614184a95be'}, { $set: { age: 34 } })
 //     .then(r=> {
-//       console.log(r)
-//       console.log('updated')
-//       return User.find()
-//     })
-//     .then(r => console.log(r))
-//     .catch(e=>console.err(e));
+  //       console.log(r)
+  //       console.log('updated')
+  //       return User.find()
+  //     })
+  //     .then(r => console.log(r))
+  //     .catch(e=>console.err(e));
+  
+  // User.deleteOne({ name: '하하'})
+  //     .then(r => console.log(r))
+  //     .catch(e=>console.err(e));
 
-// User.deleteOne({ name: '하하'})
-//     .then(r => console.log(r))
-//     .catch(e=>console.err(e));
-
-console.log(process.env.NODE_ENV);
+  module.exports = app;
