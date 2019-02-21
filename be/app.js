@@ -75,3 +75,13 @@ mongoose.connect(cfg.dbUrl, { useNewUrlParser: true }, (err) => {
   //     .catch(e=>console.err(e));
 
   module.exports = app;
+
+var jwt = require('jsonwebtoken');
+const key = '베리베리어려운키';
+var token = jwt.sign({ id: 'memi', email: 'memi@xxx.com' }, key);
+
+console.log(token);
+
+var decoded = jwt.verify(token, key);
+console.log(decoded) 
+//console.log(new Date(decoded.iat*1000))
