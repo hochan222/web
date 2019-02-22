@@ -69,6 +69,7 @@
         </v-card-actions>
       </v-card>
       </v-flex> -->
+      
       {{users}}
       <v-flex xs12 sm6 md4 v-for="u in users" :key="u._id">
       <v-card>
@@ -125,6 +126,16 @@
                   required
                   v-model="userAge"
                 ></v-select>
+              </v-flex>
+
+              <v-flex xs12 sm6 md4>
+                <v-text-field
+                  label="Legal last id*"
+                  hint="example of persistent helper text"
+                  persistent-hint
+                  required
+                  v-model="putId"
+                ></v-text-field>
               </v-flex>
             </v-layout>
           </v-container>
@@ -233,7 +244,7 @@
         console.log(this.userName, this.userAge);
         this.dialog = false;
         axios.post(`${this.$apiRootPath}user`, {
-          name: this.userName, age: this.userAge
+          name: this.userName, age: this.userAge, id: this.putId
         })
         .then((r) => {
           this.pop('사용자 등록 완료');
