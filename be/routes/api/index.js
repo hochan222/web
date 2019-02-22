@@ -15,16 +15,16 @@ const verifyToken = (t) => {
   });
 };
 
-//middleWare
-router.all('*', function(req, res, next) {
-  const token = req.headers.authorization;
-  verifyToken(token)
-    .then(v => {
-      console.log(v);
-      next()
-    })
-    .catch(e => res.send({success: false, msg: e.message}))
-});
+// //middleWare
+// router.all('*', function(req, res, next) {
+//   const token = req.headers.authorization;
+//   verifyToken(token)
+//     .then(v => {
+//       console.log(v);
+//       next()
+//     })
+//     .catch(e => res.send({success: false, msg: e.message}))
+// });
 
 router.use('/test', require('./test'));
 router.use('/user', require('./user'));

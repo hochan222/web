@@ -17,10 +17,11 @@ router.get('/', function(req, res, next) {
 
 router.post('/', (req, res, next) => {
   //post는 body에 넘겨줌
-  const {name, age} = req.body;
+  const {name, age, id} = req.body;
   const u = new User({
     name,
-    age
+    age,
+    id
   });
   u.save()
    .then(r => {
